@@ -5,19 +5,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "HelloWorldServlet", urlPatterns = "/hello")
-public class HelloWorldServlet extends HttpServlet
+@WebServlet(name = "CounterServlet", urlPatterns = "/count")
+public class CounterServlet extends HttpServlet
 {
-    @Override
+    private int count;
+
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        int viewCount = 0;
+        count += 1;
         // Create a page that displays "Hello World!" when a user visits /hello
         res.setContentType("text/html");
-        PrintWriter out = res.getWriter();
-        out.println("<h1>Hello World!</h1>");
+        if(count == 1)
+            res.getWriter().println("<h1>The count is " + count + ".</h1>");
+        else
+            res.getWriter().println("<h1>After visiting the page again, the count is now " + count + ".</h1>");
     }
 
 }
-
-
-
