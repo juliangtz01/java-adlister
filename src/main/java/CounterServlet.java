@@ -12,7 +12,7 @@ public class CounterServlet extends HttpServlet
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         count += 1;
-        // Create a page that displays "Hello World!" when a user visits /hello
+        // Create a page that displays a number that goes up by one every time the
         res.setContentType("text/html");
         if(count == 1)
             res.getWriter().println("<h1>The count is " + count + ".</h1>");
