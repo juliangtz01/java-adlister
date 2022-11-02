@@ -7,16 +7,19 @@
 </head>
 <body>
     <%@include file="partials/navbar.jsp"%>
-<form method="POST" action="/login.jsp">
-    <p></p>
-    <label for="login">Username: </label>
-    <input type="text" id="login" name="username" placeholder="Enter your username"/>
-    <p></p>
-    <label for="password">Password: </label>
-    <input type="password" id="password" name="password" placeholder="Enter your password">
-    <p></p>
-    <button type="submit">Submit</button>
-</form>
+
+    <div class="container">
+        <form method="POST" action="/login.jsp">
+            <p></p>
+            <label for="login">Username: </label>
+            <input type="text" id="login" name="username" placeholder="Enter your username"/>
+            <p></p>
+            <label for="password">Password: </label>
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+            <p></p>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
 <%
     if (request.getMethod().equalsIgnoreCase("post"))
