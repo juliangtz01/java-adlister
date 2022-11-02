@@ -19,10 +19,13 @@
 </form>
 
 <%
-    if (request.getMethod().equalsIgnoreCase("post")) {
+    if (request.getMethod().equalsIgnoreCase("post"))
+    {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        if (username.equals("admin") && password.equals("password")) {
+
+        if (username.equals("admin") && password.equals("password"))
+        {
             response.sendRedirect("/profile.jsp");
         }
     }
