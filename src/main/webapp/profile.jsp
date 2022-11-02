@@ -6,7 +6,7 @@
     <%@include file="partials/head.jsp"%>
 </head>
 <body>
-<%@include file="partials/navbar.jsp"%>
+    <%@include file="partials/navbar.jsp"%>
     <h1>You are logged in</h1>
 </body>
 </html>
