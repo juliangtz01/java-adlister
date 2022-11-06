@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="container">
-        <form method="POST" action="/pick-color.jsp">
+        <form method="POST" action="/pickcolor">
             <label for="color">Enter your favorite color: </label>
             <input type="text" id="color" name="color">
             <button type="submit">Submit Color</button>

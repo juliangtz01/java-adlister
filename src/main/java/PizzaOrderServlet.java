@@ -4,12 +4,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
-@WebServlet(name = "PizzaOrder", urlPatterns = "/pizza-order")
-public class PizzaOrder extends HttpServlet
+@WebServlet(name = "PizzaOrderServlet", urlPatterns = "/pizza-order")
+public class PizzaOrderServlet extends HttpServlet
 {
 
     @Override
