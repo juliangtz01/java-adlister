@@ -1,4 +1,6 @@
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.cj.jdbc.Driver;
 
@@ -6,37 +8,76 @@ public class JDBCLec
 {
     public static void main(String[] args)
     {
+//        List<Album> allAlbums = new ArrayList<>();
+//        try
+//        {
+//            // 1. Establish Driver and connection object
+//            DriverManager.registerDriver(new Driver());
+//            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/codeup_test_db?allowPublicKeyRetrieval=true&useSSL=false",
+//                    "root",
+//                    "codeup");
+//
+//            // 2. Create Statement instance
+//            Statement stmt = connection.createStatement();
+//
+//            // .execute() : return boolean (used for delete)
+//            // .executeUpdate() : returns the number of rows affected (used for insert or update)
+//            // .executeQuery() : returns a ResultSet object (used for a select queries)
+//
+//            // 3. Write SELECT query to execute, and set equal to a ResultSet
+//            ResultSet rs = stmt.executeQuery("SELECT * FROM albums");
+//
+//            // While there are still records found on the next row, continue to move to the next row
+//            while(rs.next())
+//            {
+//                // Create an instance of the album object based on the data coming from our DB.
+//                Album albumToAdd = new Album(rs.getLong("id"),rs.getString("artist"),rs.getString("name"));
+//                // add the new instance to the list of Albums objects
+//                allAlbums.add(albumToAdd);
+//            }
+//
+//            for(Album album : allAlbums)
+//            {
+//                System.out.println(album.getName());
+//            }
+//        }
+//        catch (SQLException e)
+//        {
+//            throw new RuntimeException("Sorry, could not connect to database!");
+//        }
+
+        // For Inserting into DB
         try
         {
-            // 1. Establish Driver and connection object
-            DriverManager.registerDriver(new Driver());
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/codeup_test_db?allowPublicKeyRetrieval=true&useSSL=false",
-                    "root",
-                    "codeup");
+            Config config = new Config();
 
-            // 2. Create Statement instance
+            DriverManager.registerDriver(new Driver());
+            Connection connection = DriverManager.getConnection(config.getUrl(),
+                    config.getUser(),
+                    config.getPassword());
+
             Statement stmt = connection.createStatement();
 
-            // .execute() : return boolean (used for delete)
-            // .executeUpdate() : returns the number of rows affected (used for insert or update)
-            // .executeQuery() : returns a ResultSet object (used for a select queries)
+            String insertQuery = "INSERT INTO albums(artist, name, release_date, genre, sales) VALUES('Lil Wayne','Carter III', 2008, 'rap',3.97)";
 
-            // 3. Write SELECT query to execute, and set equal to a ResultSet
-            ResultSet rs = stmt.executeQuery("SELECT * FROM albums");
+            // Execute the update
+            stmt.executeUpdate(insertQuery, Statement.RETURN_GENERATED_KEYS);
 
-            // While there are still records found on the next row, continue to move to the next row
-            while(rs.next())
+            // Set ResultSet to the newly Generated Keys (ids)
+            ResultSet rs = stmt.getGeneratedKeys();
+
+            if(rs.next())
             {
-                System.out.println("Here's an album:");
-                System.out.println("  id: " + rs.getLong("id"));
-                System.out.println("  artist: " + rs.getString("artist"));
-                System.out.println("  name: " + rs.getString("name"));
+                System.out.println("Inserted a new record! New id: " + rs.getLong(1));
             }
+
         }
         catch (SQLException e)
         {
-            throw new RuntimeException("Sorry, could not connect to database!");
+//            e.printStackTrace();
+            throw new RuntimeException("Sorry, could not connect to database.");
         }
+
 
     }
 }
