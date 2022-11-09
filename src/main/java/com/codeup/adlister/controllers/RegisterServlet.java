@@ -49,7 +49,7 @@ public class RegisterServlet extends HttpServlet {
             newUser.setId(DaoFactory.getUsersDao().insert(newUser));
 
             // TODO: if a user was successfully created, send them to their profile
-            request.getSession().setAttribute("user", username);
+            request.getSession().setAttribute("user", newUser);
             response.sendRedirect("/profile");
         }
         else
