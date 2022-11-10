@@ -4,7 +4,7 @@
     <title>Registration From</title>
 </head>
 <body>
-    <form method="POST" action="/register">
+    <form method="POST" action="/qregister">
         <label for="username">Username: </label>
         <input type="text" id="username" name="username" placeholder="Enter username">
         <br>
