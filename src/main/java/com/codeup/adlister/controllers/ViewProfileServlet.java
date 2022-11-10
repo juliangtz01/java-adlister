@@ -1,5 +1,9 @@
 package com.codeup.adlister.controllers;
 
+import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.models.User;
+import org.mindrot.jbcrypt.BCrypt;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,4 +20,5 @@ public class ViewProfileServlet extends HttpServlet {
         }
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
+
 }
